@@ -39,7 +39,7 @@ data "template_file" "metadata1" {
   template = "${file("${path.module}/templates/metadata.tpl")}"
 
   vars =  {
-        instance_name = "${local.node.prefix}02.${local.node.domain}"
+        instance_name = "${local.node.prefix}01.${local.node.domain}"
         ip_addr = "${local.node.ips[0]}/24"
         def_gw = "192.168.10.254"
   }
