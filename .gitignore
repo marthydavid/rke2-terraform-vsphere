@@ -1,0 +1,11 @@
+.DS_Store
+.env
+*.terraform
+.tfplan
+*.tfstate
+*.hcl
+*.info
+*.tfstate.backup
+.auto.tfvars
+!.tflint.hcl
+rke2-ansible
