@@ -10,5 +10,5 @@ network:
           address: ${ip_addr}
           gateway: ${def_gw}
           dns_nameservers:
-            - 192.168.10.254
-            - 1.0.0.1
+            - 1.0.0.2
+            - 1.1.1.2

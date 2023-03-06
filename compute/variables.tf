@@ -30,6 +30,11 @@ variable "vsphere_local_template" {
   type        = string
   default     = "alma-8.5-template-hp"
 }
+variable "vsphere_focal_template" {
+  description = "vSphere Library template name"
+  type        = string
+  default     = "focal-cloud-img-template"
+}
 
 variable "root_disk_size" {
   description = "Disk size of root"

@@ -5,7 +5,7 @@ resource "vsphere_folder" "folder" {
 }
 
 resource "vsphere_virtual_machine" "vm1" {
-  name             = "rke2-ctrl01"
+  name             = "${local.node.prefix}01"
   folder           = resource.vsphere_folder.folder.path
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore1.id
@@ -54,7 +54,7 @@ resource "vsphere_virtual_machine" "vm1" {
 }
 
 resource "vsphere_virtual_machine" "vm2" {
-  name             = "rke2-ctrl02"
+  name             = "${local.node.prefix}02"
   folder           = resource.vsphere_folder.folder.path
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore1.id
@@ -89,7 +89,7 @@ resource "vsphere_virtual_machine" "vm2" {
     template_uuid = data.vsphere_virtual_machine.local-template.id
   }
   extra_config = {
-        "guestinfo.userdata"          = "${base64encode(templatefile("${path.module}/templates/userdata.tpl",{}))}"
+    "guestinfo.userdata"          = "${base64encode(templatefile("${path.module}/templates/userdata.tpl",{}))}"
     "guestinfo.userdata.encoding" = "base64"
     "guestinfo.metadata"          = "${base64encode(templatefile("${path.module}/templates/metadata.tpl",
                                       {
@@ -104,7 +104,7 @@ resource "vsphere_virtual_machine" "vm2" {
 }
 
 resource "vsphere_virtual_machine" "vm3" {
-  name             = "rke2-ctrl03"
+  name             = "${local.node.prefix}03"
   folder           = resource.vsphere_folder.folder.path
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore1.id

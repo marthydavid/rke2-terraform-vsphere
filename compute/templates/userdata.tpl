@@ -25,11 +25,13 @@ write_files:
 - content: |
     #!/bin/bash
     cat <<EOF>/etc/resolv.conf
-    nameserver 192.168.10.254
-    nameserver 1.0.0.1
+    nameserver 1.0.0.2
+    nameserver 1.1.1.2
     EOF
-    dnf install https://zfsonlinux.org/epel/zfs-release.el8_5.noarch.rpm -y
+    dnf install https://zfsonlinux.org/epel/https://github.com/zfsonlinux/zfsonlinux.github.com/blob/master/epel/zfs-release-2-2.el8.noarch.rpm -y
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
+    sed -i 's/# baseurl/baseurl/g' /etc/yum.repos.d/*.repo
+    sed -i 's/^mirrorlist/#mirrorlist/g' /etc/yum.repos.d/*.repo
     dnf config-manager --disable zfs
     dnf config-manager --enable zfs-kmod
     dnf install zfs -y
@@ -39,4 +41,4 @@ write_files:
   path: /tmp/zfs.sh
 runcmd:
   - [ /bin/bash, /tmp/zfs.sh ]
-  - [ /bin/bash, -c, echo "nameserver 192.168.10.254" > /etc/resolv.conf]
+  - [ /bin/bash, -c, echo "nameserver 1.0.0.2" > /etc/resolv.conf]
