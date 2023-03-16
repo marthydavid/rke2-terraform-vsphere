@@ -1,4 +1,5 @@
 #cloud-config
+package_upgrade: true
 bootcmd:
 - ifdown ens192
 - ifup ens192
@@ -8,6 +9,7 @@ packages:
 - curl
 - wget
 - bind-utils
+- yum-utils
 ssh_authorized_keys:
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDY/e1KJUiwOWUNr9RJb7DrUJqEH/8z1bvAW1XvzkNem697mDuqaZTq9D6TbVQf/NLJjSWiHlw7vhyzw+xSUExC0BDwv7CzPvRzgzpvF+AGNda7FhOElUprglxFeg08urxNOtSIzzsyBQcSyay2TfGb8Bho9/w3E88HB0UoRuUbNV8l1cXMUmkfH4WJgqzhZiJyPGzxfqtQ0gxf4MvqGbehzFtTIhlwf5Mqh/UYga7UwPgj/t/q+pKXMH4wNyAAzL0qWe5WCh99aNPyXR8DFGbg93pSdIQzNHpuyI4TS9NSOGcl+WrLFYEy8UTRIr6g7oFXJKN1EXdLFlAMC9xCB/Yp
 users:
@@ -28,7 +30,7 @@ write_files:
     nameserver 1.0.0.2
     nameserver 1.1.1.2
     EOF
-    dnf install https://zfsonlinux.org/epel/https://github.com/zfsonlinux/zfsonlinux.github.com/blob/master/epel/zfs-release-2-2.el8.noarch.rpm -y
+    dnf install https://zfsonlinux.org/epel/zfs-release-2-2.el8.noarch.rpm -y
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
     sed -i 's/# baseurl/baseurl/g' /etc/yum.repos.d/*.repo
     sed -i 's/^mirrorlist/#mirrorlist/g' /etc/yum.repos.d/*.repo

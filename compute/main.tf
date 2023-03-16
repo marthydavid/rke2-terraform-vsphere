@@ -1,5 +1,5 @@
 resource "vsphere_folder" "folder" {
-  path          = "terraform-rke2"
+  path          = "terraform-rke2-2"
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

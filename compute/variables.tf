@@ -39,13 +39,13 @@ variable "vsphere_focal_template" {
 variable "root_disk_size" {
   description = "Disk size of root"
   type        = string
-  default     = "20"
+  default     = "50"
 }
 
 variable "zfs_disk_size" {
   description = "Disk size of zfs"
   type        = string
-  default     = "40"
+  default     = "50"
 }
 #variable "node_name_prefix" {
 #  description = "Name prefix"
@@ -63,19 +63,19 @@ variable "zfs_disk_size" {
 
 locals {
   node = {
-    prefix = "rke2-ctrl"
+    prefix = "rke2-ctrl2"
     domain = "budapest.marthy.xyz"
     ips = [
-      "192.168.10.70",
-      "192.168.10.71",
-      "192.168.10.72"
+      "192.168.10.80",
+      "192.168.10.81",
+      "192.168.10.82"
     ]
   }
-  node_name_prefix = "rke2-ctrl"
+  node_name_prefix = "rke2-ctrl2"
   node_name_domain = "budapest.marthy.xyz"
   node_ips = {
-    "0" = "192.168.10.70"
-    "1" = "192.168.10.71"
-    "2" = "192.168.10.72"
+    "0" = "192.168.10.80"
+    "1" = "192.168.10.81"
+    "2" = "192.168.10.82"
   }
 }
