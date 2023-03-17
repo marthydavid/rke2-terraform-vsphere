@@ -9,7 +9,7 @@ resource "null_resource" "rke2_deployment" {
     null_resource.rke2_ansible
   ]
   provisioner "local-exec" {
-    command = "ansible-playbook site.yml"
+    command = "ansible-playbook -i inventory/rke2-1/hosts.ini site.yml"
     working_dir = "rke2-ansible"
     environment = {
       ANSIBLE_HOST_KEY_CHECKING = "FALSE"

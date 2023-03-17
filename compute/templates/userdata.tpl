@@ -1,4 +1,5 @@
 #cloud-config
+package_upgrade: true
 bootcmd:
 - ifdown ens192
 - ifup ens192
@@ -28,7 +29,7 @@ write_files:
     nameserver 1.0.0.2
     nameserver 1.1.1.2
     EOF
-    dnf install https://zfsonlinux.org/epel/https://github.com/zfsonlinux/zfsonlinux.github.com/blob/master/epel/zfs-release-2-2.el8.noarch.rpm -y
+    dnf install https://zfsonlinux.org/epel/zfs-release-2-2.el8.noarch.rpm -y
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
     sed -i 's/# baseurl/baseurl/g' /etc/yum.repos.d/*.repo
     sed -i 's/^mirrorlist/#mirrorlist/g' /etc/yum.repos.d/*.repo

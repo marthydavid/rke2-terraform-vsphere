@@ -63,7 +63,7 @@ variable "zfs_disk_size" {
 
 locals {
   node = {
-    prefix = "rke2-ctrl"
+    prefix = "rke2-ctrl1"
     domain = "budapest.marthy.xyz"
     ips = [
       "192.168.10.70",
@@ -71,7 +71,7 @@ locals {
       "192.168.10.72"
     ]
   }
-  node_name_prefix = "rke2-ctrl"
+  node_name_prefix = "rke2-ctrl1"
   node_name_domain = "budapest.marthy.xyz"
   node_ips = {
     "0" = "192.168.10.70"
