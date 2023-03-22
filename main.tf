@@ -1,4 +1,16 @@
 terraform {
+  backend "s3"{
+    bucket                      = "terraform-state"
+    key                         = "rke2-2/terraform.tfstate"
+    region                      = "eu-frankfurt-1"
+    endpoint                    = "https://fr8ipbv8ozqv.compat.objectstorage.eu-frankfurt-1.oraclecloud.com"
+    shared_credentials_file     = "shared_credentials_file"
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+  }
+
   required_providers {
     vsphere = {
       source = "hashicorp/vsphere"

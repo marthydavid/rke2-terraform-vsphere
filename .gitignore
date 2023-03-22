@@ -9,3 +9,4 @@
 .auto.tfvars
 !.tflint.hcl
 rke2-ansible
+shared_credentials_file
